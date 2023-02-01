@@ -96,8 +96,8 @@ function DLL()
         node.previous = currentNode.previous
         previousNode.next = node
     }
-    length ++
   }
+  length ++
 }
 
 

@@ -50,7 +50,6 @@ class main {
             let arr = "";
             while (temp != null) {
                 if (length != 0) {
-                    // arr.push(temp.element)
                     arr += `${temp.element} -> `
                     temp = temp.next;
                 }
@@ -276,10 +275,8 @@ class main {
                 if(next != null)
                 {
                     next = next.next
-                }
-                            
-            }
-          
+                }                           
+            }        
             return previous
 
         }
@@ -318,11 +315,14 @@ class main {
             let binary = 0
             let position = 0
             let currentNode = head
+            let rev = this.reverse(head)
+            console.log(rev);
+        
 
-            while(currentNode)
+            while(rev)
             {
-                binary += currentNode.element*Math.pow(2,position)
-                currentNode = currentNode.next
+                binary += rev.element*Math.pow(2,position)
+                rev = rev.next
                 position ++
             }
             return binary
@@ -345,6 +345,45 @@ class main {
             
         }
 
+    // find binding point
+    // we have two list that connected each other in one node. find and return that node....
+
+    this.bindingPoint = function(list1, list2)
+    {
+        let length1 = list1.length()
+        let length2 = list2.length()
+        let firstNode = list1.head()
+        let secondNode = list2.head()
+        if(length1>length2)
+        {
+            while(length1!=length2)
+            {
+                console.log(firstNode);
+                head = firstNode.next
+                console.log(head);
+                length --     
+                length1 -- 
+                console.log(list1.length()); 
+            }
+        }
+        else
+        {
+            while(length1!=length2)
+            {
+                secondNode = secondNode.next 
+                head = firstNode
+
+                length--  
+                length2--            
+            }
+
+        }
+        let length3 = list1.length()
+        let length4 = list2.length()
+        console.log(length3, length4);
+
+    }
+
 
 
 
@@ -353,17 +392,29 @@ class main {
 
 
 let L1 = new main()
+let L2 = new main()
+let L3 = new main()
 
 
+
+L1.add(0)
+L1.add(1)
 L1.add(2)
 L1.add(3)
 L1.add(4)
 
-console.log(L1.unshiftLL(1));
+L2.add(1)
+L2.add(2)
+L2.add(3)
+L2.add(4)
 
-L1.display()
 
 
+console.log(L3.bindingPoint(L1,L2));
+
+
+
+roshan,'=========' 
 
 
 
