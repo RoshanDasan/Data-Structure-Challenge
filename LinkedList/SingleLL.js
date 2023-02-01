@@ -1,3 +1,4 @@
+const { log } = require("console");
 
 class main {
     constructor() {
@@ -46,10 +47,11 @@ class main {
         this.display = function () {
             let temp = head;
 
-            let arr = [];
+            let arr = "";
             while (temp != null) {
                 if (length != 0) {
-                    arr.push(temp.element);
+                    // arr.push(temp.element)
+                    arr += `${temp.element} -> `
                     temp = temp.next;
                 }
 
@@ -171,18 +173,48 @@ class main {
 
             while (currentNode.next != null) {
                 if (currentNode.element == currentNode.next.element) {
+                    console.log(currentNode.element);
                     currentNode.next = currentNode.next.next;
+
                     length--;
                 }
-
                 else {
                     currentNode = currentNode.next;
                 }
-
+                
             }
+            return head
 
 
         };
+
+        //remove duplicate II
+
+        this.deleteDuplicates = function() {
+
+            let currentNode = head
+
+            if(currentNode.element == currentNode.next.element)
+            {
+                currentNode = currentNode.next.next
+                currentNode = head
+            }
+          
+            while(currentNode.next.next != null)
+            {
+                if(currentNode.next.element == currentNode.next.next.element)
+                {
+                    currentNode.next = currentNode.next.next.next
+                }
+                else
+                {
+                    currentNode = currentNode.next
+                }
+
+            }  
+         return head
+        };
+
 
         //middle of the linkedlist
 
@@ -279,6 +311,43 @@ class main {
         }
 
 
+        // binary to decimal
+
+        this.binaryToDecimal = function()
+        {
+            let binary = 0
+            let position = 0
+            let currentNode = head
+
+            while(currentNode)
+            {
+                binary += currentNode.element*Math.pow(2,position)
+                currentNode = currentNode.next
+                position ++
+            }
+            return binary
+
+        }
+
+        // shift method
+
+        this.unshiftLL = function(element)
+        {
+            let node = new Node(element)
+            console.log(node);
+
+            let currentNode = head
+            node.next = currentNode
+            head = node
+
+            console.log(node);
+            return node
+            
+        }
+
+
+
+
 }
 }
 
@@ -286,14 +355,13 @@ class main {
 let L1 = new main()
 
 
-L1.add(1)
 L1.add(2)
 L1.add(3)
-L1.add(2)
-L1.add(1)
+L1.add(4)
 
+console.log(L1.unshiftLL(1));
 
-console.log(L1.palindrome());
+L1.display()
 
 
 
