@@ -1,39 +1,13 @@
-// selecting an element and swap to currect position.
-
-
-function sort(arr)
-{
-    for(i=0; i<arr.length; i++)
-    {
-      let arrayLength = arr.length - i - 1
-      let max = maxElement(arr, arrayLength)
-
-      swap(arr, max, arrayLength)
+function selectionSort(arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    let min = i;
+    for (let j = i + 1; j < array.length; j++) {
+      if (arr[j] < arr[min]) min = j;
     }
+    if (min != i) [arr[i], arr[min]] = [arr[min], arr[i]];
+  }
+  return arr;
 }
 
-function maxElement(array,length)
-{
-    let max = 0
-    for (let i = 0; i < length; i++) {
-      if(array[max] < array[i])
-      {
-        max = array[i]
-      }
-        
-    }
-    return max
-}
-
-function swap(arr, max, arrayLength)
-{
-    let temp = arr[max]
-    arr[max] = arr[arrayLength]
-    arr[arrayLength] = temp
-}
-
-let array = [5,4,3,2,1]
-
-sort(array)
-
-console.log(array);
+let array = [2, 1, 4, 6, 5, 3];
+console.log(selectionSort(array));
